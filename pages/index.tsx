@@ -1,5 +1,7 @@
 import type { NextPage } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchCustomers } from '../src/asyncAction/customers';
+import { addCustomoerAction, removeCusomerAction } from '../src/store/castomerReducer';
 var randomColor = require('randomcolor');
 var color = randomColor()
 const Home: NextPage = () => {
@@ -8,7 +10,7 @@ const Home: NextPage = () => {
   const dispatch = useDispatch()
 
   const Plus = () => {
-    dispatch({ type: "ADD_ACTION", payload: 1 })
+    dispatch({ type: "ADD_ACTION", payload:  })
   }
   const minus = () => {
     dispatch({ type: "M_ACTION", payload: 1 })
@@ -17,37 +19,53 @@ const Home: NextPage = () => {
   const addCustomer = (name) => {
     const customer = {
       name,
-      id: Date.now(),
+      id: Date.now()
     }
-    dispatch({ type: 'ADD_CUSTOMER', payload: customer })
+    dispatch(addCustomoerAction(customer))
   }
 
+  const remove = (id) => {
+    dispatch(removeCusomerAction(id))
+  }
+
+
   return (
-    <div style={{
-      justifyContent: 'center',
-      alignItems: 'center',
-      display: 'flex',
-      height: '100vh'
-    }}>
-      {count}
-      <div style={{ flex: 'flex' }} >
-        <button style={{ color: color }} onClick={() => Plus()} >plus</button>
-        <button onClick={minus} >minus</button>
-        <button onClick={() => addCustomer(prompt())} >add Client</button>
-        <button onClick={minus} >minus</button>
+    <div>
+
+      <div style={{
+        height: '10vh',
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+      }}>
+        {count}
+        <div style={{ flex: 'flex' }} >
+          <button style={{ color: color }} onClick={() => Plus()} >plus</button>
+          <button onClick={minus} >minus</button>
+          <button onClick={() => addCustomer(prompt())} >add Client</button>
+          <button onClick={() => dispatch(fetchCustomers())} >ADD_CUSTOMERS</button>
+        </div>
       </div>
-      <div style={{ flexDirection: 'column', display: 'flex', }} >
-        {customer.length > 0 ?
-          <div  >
-            {customer.map(cus => <div>{cus.name}</div>)}
-          </div>
-          :
-          <div>
-            da
-          </div>
-        }
+      <div style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+      }}
+      >
+        <div style={{ display: 'flex', backgroundColor: color, }} >
+          {customer.length > 0 ?
+            <div  >
+              {customer.map(cus => <div key={cus.id}
+                onClick={() => remove(cus.id)}>{cus.name}</div>)}
+            </div>
+            :
+            <div>
+              Nol
+            </div>
+          }
+        </div>
       </div>
-    </div >
+    </div>
   )
 }
 

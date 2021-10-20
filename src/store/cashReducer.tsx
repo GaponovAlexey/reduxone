@@ -1,20 +1,25 @@
 const initialState = {
   count: 0,
 };
+const ADD_ACTION = 'ADD_ACTION'
+const MINUS_ADD = 'MINUS_ADD'
 
 export const cashReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case "ADD_ACTION":
+    case ADD_ACTION:
       return {
         ...state,
-        count: state.count + action.payload,
+        count: state.count + 1,
       };
-    case "M_ACTION":
+    case MINUS_ADD:
       return {
         ...state,
-        count: state.count - action.payload,
+        count: state.count - 1,
       };
     default:
       return state;
   }
 };
+
+export const incrementAction = (payload: any) => ({ type: MINUS_ADD, payload })
+export const dicrementAction = (payload: any) => ({ type: MINUS_ADD, payload })
