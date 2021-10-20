@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
+<<<<<<< HEAD
 import { fetchCustomers } from '../src/asyncAction/customers';
 import { addCustomoerAction, removeCusomerAction } from '../src/store/castomerReducer';
 var randomColor = require('randomcolor');
@@ -23,6 +24,11 @@ const Home: NextPage = () => {
     }
     dispatch(addCustomoerAction(customer))
   }
+=======
+
+const Home: NextPage = () => {
+  
+>>>>>>> 95589b8c784500ae84c0b8759f7c19cac8690df6
 
   const remove = (id) => {
     dispatch(removeCusomerAction(id))
@@ -31,6 +37,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
+<<<<<<< HEAD
 
       <div style={{
         height: '10vh',
@@ -65,6 +72,9 @@ const Home: NextPage = () => {
           }
         </div>
       </div>
+=======
+      da
+>>>>>>> 95589b8c784500ae84c0b8759f7c19cac8690df6
     </div>
   )
 }
