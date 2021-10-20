@@ -28,4 +28,5 @@ export const castomerReducer = (state = initialState, action: any) => {
 
 export const addCustomoerAction = (payload) => ({ type: ADD_CUSTOMER, payload })
 export const removeCusomerAction = (payload) => ({ type: REMOVE_ADD, payload })
+
 export const addManyCustomersAction = (payload) => ({ type: ADD_MANY_CUSTOMER, payload })

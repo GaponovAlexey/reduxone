@@ -1,8 +1,10 @@
 const initialState = {
   count: 0,
 };
-const ADD_ACTION = 'ADD_ACTION'
-const MINUS_ADD = 'MINUS_ADD'
+export const ADD_ACTION = 'ADD_ACTION'
+export const MINUS_ADD = 'MINUS_ADD'
+export const ASYNC_INCREMENT = 'ASYNC_INCREMENT'
+export const ASYNC_DECREMENT = 'ASYNC_INCREMENT'
 
 export const cashReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -21,5 +23,7 @@ export const cashReducer = (state = initialState, action: any) => {
   }
 };
 
-export const incrementAction = (payload: any) => ({ type: MINUS_ADD, payload })
-export const dicrementAction = (payload: any) => ({ type: MINUS_ADD, payload })
+export const incrementAction = () => ({ type: ADD_ACTION,  })
+export const dicrementAction = () => ({ type: MINUS_ADD,  })
+export const asyncIncrementAction = () => ({ type: ASYNC_INCREMENT,  })
+export const asyncDicrementAction = () => ({ type: ASYNC_DECREMENT,  })

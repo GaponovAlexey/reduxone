@@ -1,20 +1,22 @@
 import type { NextPage } from 'next'
 import { useDispatch, useSelector } from 'react-redux'
-<<<<<<< HEAD
 import { fetchCustomers } from '../src/asyncAction/customers';
+import { asyncDicrementAction, asyncIncrementAction, dicrementAction, incrementAction } from '../src/store/cashReducer';
 import { addCustomoerAction, removeCusomerAction } from '../src/store/castomerReducer';
 var randomColor = require('randomcolor');
 var color = randomColor()
+
+
 const Home: NextPage = () => {
-  const count = useSelector(state => state.cashReducer.count)
+  const count = useSelector(state => state.cash.count)
   const customer = useSelector(state => state.cast.customers)
   const dispatch = useDispatch()
 
   const Plus = () => {
-    dispatch({ type: "ADD_ACTION", payload:  })
+    dispatch(incrementAction())
   }
   const minus = () => {
-    dispatch({ type: "M_ACTION", payload: 1 })
+    dispatch(dicrementAction())
   }
 
   const addCustomer = (name) => {
@@ -24,11 +26,6 @@ const Home: NextPage = () => {
     }
     dispatch(addCustomoerAction(customer))
   }
-=======
-
-const Home: NextPage = () => {
-  
->>>>>>> 95589b8c784500ae84c0b8759f7c19cac8690df6
 
   const remove = (id) => {
     dispatch(removeCusomerAction(id))
@@ -37,7 +34,6 @@ const Home: NextPage = () => {
 
   return (
     <div>
-<<<<<<< HEAD
 
       <div style={{
         height: '10vh',
@@ -47,8 +43,8 @@ const Home: NextPage = () => {
       }}>
         {count}
         <div style={{ flex: 'flex' }} >
-          <button style={{ color: color }} onClick={() => Plus()} >plus</button>
-          <button onClick={minus} >minus</button>
+          <button style={{ color: color }} onClick={() => dispatch(asyncIncrementAction())} >plus</button>
+          <button onClick={() => dispatch(asyncDicrementAction())} >minus</button>
           <button onClick={() => addCustomer(prompt())} >add Client</button>
           <button onClick={() => dispatch(fetchCustomers())} >ADD_CUSTOMERS</button>
         </div>
@@ -72,9 +68,6 @@ const Home: NextPage = () => {
           }
         </div>
       </div>
-=======
-      da
->>>>>>> 95589b8c784500ae84c0b8759f7c19cac8690df6
     </div>
   )
 }
