@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { UserList } from './components/UserList'
+import { UserList } from './UserList'
 
 const Home: NextPage = () => {
 
