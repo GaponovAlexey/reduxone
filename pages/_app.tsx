@@ -7,8 +7,9 @@ import { store } from '../src/store'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store} >
-    <Component {...pageProps} />
+      <Component {...pageProps} />
     </Provider>
   )
 }
 export default MyApp
+
